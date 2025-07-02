@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termo Infinity</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="settings-screen">
+        <div class="menu-container">
+            <h1>Termo Infinity</h1>
+            <div class="settings-container">
+                <div class="setting">
+                    <label for="word-length">Letras por palavra</label>
+                    <input type="number" id="word-length-input" value="5" min="4" max="9">
+                </div>
+                <div class="setting">
+                    <label for="chances">Chances</label>
+                    <input type="number" id="chances-input" value="6" min="5">
+                </div>
+                <div class="setting">
+                    <label for="word-count">Palavras simultâneas</label>
+                    <input type="number" id="word-count-input" value="1" min="1">
+                </div>
+            </div>
+            <div class="menu-buttons">
+                <button id="start-game-btn">Começar Jogo</button>
+                <button id="dark-mode-toggle" class="dark-mode-button">Modo Escuro</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="game-screen" class="hidden">
+        <div id="boards-container"></div>
+        <div id="keyboard"></div>
+    </div>
+
+    
+
+	<script src="wordlist.js"></script>
+	
+    <script src="script.js"></script>
+	
+</body>
+</html>
