@@ -1,14 +1,3 @@
-// script.js
-
-// Assuming wordList is globally available from wordlist.js
-// For demonstration, a simplified wordList structure:
-// const wordList = {
-//     4: ["casa", "bola", "pato", "fogo", "agua"],
-//     5: ["prato", "verde", "cinco", "mundo", "pedra"],
-//     6: ["janela", "escola", "banana", "floresta", "cidade"],
-//     7: ["abacaxi", "elefante", "computador", "cachorro", "passaro"]
-// };
-
 class Game {
     constructor() {
         this.settingsScreen = document.getElementById('settings-screen');
@@ -98,11 +87,8 @@ class Game {
     }
 
     initializeWordList() {
-        // This part assumes rawWordListContent is available globally
-        // and processes it into the wordList object.
-        // If wordlist.js is pre-processed, this block can be removed.
         if (typeof rawWordListContent !== 'undefined') {
-            window.wordList = {}; // Ensure wordList is global
+            window.wordList = {};
             rawWordListContent.split(/\r?\n/).forEach(word => {
                 const trimmedWord = word.trim().toLowerCase();
                 if (trimmedWord.length > 0) {
@@ -343,12 +329,12 @@ class Game {
             const letter = guessLetters[i];
             const result = tileResults[i];
 
-            // Apply classes with a delay for sequential flip animation
+            
             setTimeout(() => {
                 tile.classList.add('flip');
                 tile.classList.add(result);
 
-                // Update keyboard status based on the best match for each letter
+                
                 if (result === 'correct') {
                     letterStatus[letter] = 'correct';
                 } else if (result === 'present' && letterStatus[letter] !== 'correct') {
@@ -357,8 +343,8 @@ class Game {
                     letterStatus[letter] = 'absent';
                 }
 
-                // Update keyboard colors after each tile flips
-                if (i === this.selectedWordLength - 1) { // Only update keyboard after the last tile flips
+                
+                if (i === this.selectedWordLength - 1) {
                     for (const key in letterStatus) {
                         const button = document.querySelector(`.keyboard-button[data-key="${key.toLowerCase()}"]`);
                         if (button) {
@@ -374,7 +360,7 @@ class Game {
                         }
                     }
                 }
-            }, i * 150); // 150ms delay between each tile flip
+            }, i * 150); 
         }
 
         for (const letter in letterStatus) {
@@ -394,7 +380,6 @@ class Game {
 
         if (guess === secretWord) {
             this.gameWon[boardIndex] = true;
-            // Add shine effect to the current row
             currentRowElement.classList.add('shine');
         } else {
             this.currentRows[boardIndex]++;
